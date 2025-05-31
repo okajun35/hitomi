@@ -492,8 +492,8 @@
 
 *chapter_menu
 [cm]
-[jump target=*title_menu]
+[call storage="rclick_chapter.ks" target=*chapter_menu]
 
 *extra_menu
 [cm]
-[jump target=*title_menu]
+[call storage="extra.ks" target=*extra_menu]

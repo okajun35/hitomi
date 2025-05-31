@@ -1,42 +1,52 @@
+; TyranoScript版 ヒ・ト・ミ
+; オリジナル: 吉里吉里版から移植
+
 *start
 
 [title name="ヒ・ト・ミ"]
 
 [stop_keyconfig]
 
-;メッセージレイヤー定義
-[position layer="message0" left=80 top=500 width=800 height=200 page=fore visible=true]
+; 縦書きメッセージレイヤー定義
+[position layer="message0" left=80 top=80 width=860 height=580 page=fore visible=true vertical=true]
 
-;プリローダー
-[preload storage="data/bgimage/black2.jpg"]
-[preload storage="data/image/rogo.jpg"]
-[preload storage="data/image/rogo2.jpg"]
+; プリローダー
+[preload storage="rogo2.jpg"]
+[preload storage="rogo.jpg"]
+[preload storage="title2/タイトル画面2.bmp"]
 
-;タイトル画面へ
-[jump target=*title_menu]
+; ゲーム初期化
+[history output=false enabled=false]
+[disablestore store=true]
+[rclick enabled=false]
 
-*title_menu
-
-[cm]
-[layopt layer=message0 visible=false]
-[layopt layer=0 visible=false]
-[layopt layer=1 visible=false]
-
-;ロゴ表示
+; ロゴシーケンス
+[layopt layer="message0" visible=false]
 [bg storage="rogo2.jpg" time=1000]
 [wait time=1000]
 [bg storage="rogo.jpg" time=2000]
 [wait time=3000]
 
-;タイトル画面
+; タイトル画面へ
+[jump target=*title_menu]
+
+*title_menu
+
+[cm]
+[layopt layer="message0" visible=false]
+
+; タイトル画面
 [bg storage="title2/タイトル画面2.bmp"]
 
-;BGM開始
-[playbgm storage="bgm/信長.ogg" loop=true]
+; BGM開始（ファイルが存在しない場合はスキップ）
+; [playbgm storage="bgm/信長.ogg" loop=true volume=50]
 
-;ボタン配置
+; メッセージレイヤー設定（縦書き無効でボタン表示）
+[position layer="message0" left=0 top=0 width=1024 height=768 page=fore visible=false vertical=false opacity=0]
+
+; ボタン配置
 [locate x=40 y=0]
-[button graphic="title2/start.png" target=*game_start]
+[button graphic="title2/start.png" target=*restore]
 
 [locate x=40 y=70]
 [button graphic="title2/load.png" role="load"]
@@ -52,22 +62,29 @@
 
 [s]
 
-*game_start
+*restore
 
+; ゲーム設定復帰
+; [rclick call=true target="*rclick_menu" storage="rclick.ks" enabled=true]
+[position layer="message0" page=fore opacity=128 vertical=true left=80 top=80 width=860 height=580]
+[delay speed=user]
+[disablestore store=false]
+[history output=true enabled=true]
+
+*start_story
+
+; 実際のシナリオ開始
+; BGM停止
+; [fadeoutbgm time=1000]
 [cm]
-[layopt layer=message0 visible=true]
-[layopt layer=0 visible=true]
-[layopt layer=1 visible=true]
-
-;BGM停止
-[stopbgm]
-
-;ゲーム開始
-[bg storage="black2.jpg"]
-
 [wait time=500]
 
-;オープニングテキスト
+; 黒背景
+[bg storage="black.jpg"]
+
+[layopt layer="message0" visible=true]
+
+; オープニング引用文
 ヒトは自分自由を手に入れたとき、その不自由な現実とその不自由さに気づくであろう。[l][r]
 人間は永遠に自由では有り得ない。なぜなら人間は生きており、死ななければならず、[l][r]
 そして人間は考えるからだ。[l][r]
@@ -95,23 +112,20 @@
 [resetalign]
 
 ーーーーーーーーーーーーーーーーーーーーーーーーーー[r]
-[r]
+[r][p]
 
-[wait time=1000]
-
-[jump target=*cast]
+[cm]
 
 *cast
 
-[cm]
+; 配役・概要
 [bg storage="taitole.jpg"]
-
 [font size=27 color=0xffffff bold=true]
 配役・概要[resetfont][r]
 [r]
 
 【時代】[l][r]
-天正六年（一五七八年）夏　～　天正十年（一五八二）年　織田・本能寺[l][r]
+天正六年（一五七八年）夏　～　天正十年（一五八二年）　織田・本能寺[l][r]
 [r]
 [r]
 
@@ -135,56 +149,45 @@
 とね　…　高槻の家臣[r]
 [r]
 
-[wait time=500]
+序[l][p]
 
-[jump target=*story_011]
+[cm]
 
 *story_011
 
-[cm]
-[bg storage="fgimage/back.jpg"]
-
+; 第一幕　道場稽古
 [font size=27 color=0xffffff bold=true]
 第一幕　道場稽古[resetfont][r]
 [r]
 
-[chara_show name="演者" storage="fgimage/1/_IS17189.JPG" left=0 top=50]
+; 背景設定（利用可能な画像を使用）
+[bg storage="black.jpg"]
 
-;効果音再生
-[playse storage="sound/effect/P51鐘音.ogg" loop=true]
+; BGM開始（効果音ファイルが存在しない場合はコメントアウト）
+; [playbgm storage="sound/effect/P51鐘音.ogg" loop=true volume=50]
 
 これは高槻城の道場なり。[l][r]
 カンカンと鳴る鉄の音、ウォーミングアップする音、[l][r]
 そして何より鋭い眼差しを交わしている。[l][r]
 [r]
 
-;音声再生
-[playse storage="sound/voice/1/itou.ogg"]
-
-[chara_mod name="指導者" storage="fgimage/1/_IS17189.JPG"]
+; 音声再生（ファイルが存在しない場合はコメントアウト）
+; [playse storage="sound/voice/1/itou.ogg"]
 
 指導者　　　
 道場の皆様、お疲れ様でございます。短い時間ではございますが、今日は、高槻城主の、[l][r]
 この道場稽古にお越しいただいてありがとうございます。宜しくお願いいたします。[l][r]
 [r]
 
-[chara_hide name="指導者"]
-
 そう言って台に出て行く道場主たち。[r]
 光秀らの道場主が三人、ここに残る。[r]
 彼は一人、クールな表情で不敵な笑みを浮かべる。[l][r]
 
-[chara_show name="演者" storage="fgimage/2/_IS17200.JPG" left=0 top=50]
-
 ドンドンと音、すごい勢い……。[l][r]
 [r]
 
-[chara_mod name="演者" storage="fgimage/2/_IS17202.JPG"]
-
 道場主が整列して来る。鳴り響く太鼓、道場主達に呼びかける。[l][r]
 [r]
-
-[chara_mod name="演者" storage="fgimage/1/_IS17189.JPG"]
 
 織部郎　　　
 皆々、こちらに。[l][r]
@@ -192,17 +195,12 @@
 某家臣　　　
 ここにおります。[l][r]
 
-;音声再生
-[playse storage="sound/voice/1/2.ogg"]
-
 織部郎　　　
 短い時間でございます。今日の力は、自分個々の状況、自分なりのご[l][r]
 指導をいただくようにできます。では…、今の間違いないものは、どんなものに[l][r]
-なるでしょうか…。今度は皆で力を合わせて、実際にお稽古を着けてみたいと思います。アインシュタインは言っています。「明智には光秀がある。煩悩には真理がある」と。[l][r]
+なるでしょうか…。今度は皆で力を合わせて、実際にお稽古を着けてみたいと思います。[l][r]
+アインシュタインは言っています。「明智には光秀がある。煩悩には真理がある」と。[l][r]
 [r]
-
-;効果音
-[playse storage="sound/effect/P34ドーン.ogg"]
 
 一発の撃鉄音。[l][r]
 [r]
@@ -215,20 +213,12 @@
 道場主達　　　
 宜しくお願いいたします。[l][r]
 
-[chara_show name="演者" storage="fgimage/3/_IS32232.JPG" left=0 top=50]
-
-;音声再生
-[playse storage="sound/voice/1/3.ogg"]
-
 織部郎　　　
 はいッハァーッスタンバーイ！鋭利ッスタンバーイ！セットッスタンバーイ！[l][r]
 
 [r]
 鋭利、セットッと道場主達により運び込まれる。[l][r]
 [r]
-
-;音声再生
-[playse storage="sound/voice/1/4.ogg"]
 
 織部郎　　　
 はい行くぞー！ハイアーッアイア[l][r]
@@ -237,45 +227,27 @@
 スタンバイッ！すごい道場主達の突進。[l][r]
 [r]
 
-;音声再生
-[playse storage="sound/voice/1/5.ogg"]
-
 織部郎　　　
 スタート！[l][r]
 
 [r]
 
-[jump target=*story_012]
-
 *story_012
 
-[stopbgm]
-
-[chara_show name="演者" storage="fgimage/3/_IS17213.JPG" left=0 top=50]
-
 道場主達が疲労困憊となり、その場に身にまとう。[r]
-
-;効果音
-[playse storage="sound/effect/P34ドーン.ogg"]
-
-[chara_mod name="演者" storage="fgimage/3/_IS32234.JPG"]
-
-;BGM開始
-[playbgm storage="bgm/信長.ogg" loop=true]
 
 場面は野外の野原へと変わる。[l][r]
 [r]
 
-[cm]
+[p][cm]
 
+; 第二幕　秀光・右近
 [font size=27 color=0xffffff bold=true]
 第二幕　　秀光・右近[resetfont][r]
 [r]
 
 信長、彼方遥かに駆け足。[l][r]
 [r]
-
-[chara_show name="信長" storage="fgimage/3/_IS16671.JPG" left=0 top=50]
 
 信長　　　
 聞け、岐阜おりこの秀光に帰順の盃、彼が頭…に関与すべきならば、その信念[l][r]
@@ -289,32 +261,20 @@
 [r]
 しかし、何だか騒がしい。[l]
 
-;BGM停止
-[stopbgm]
-
 そのような中に、彼の住む城内の上向へ。[l][r]
-
-[jump target=*story_013]
 
 *story_013
 
+; 第三幕　雪乃村
 [font size=27 color=0xffffff bold=true]
-
-[chara_show name="演者" storage="fgimage/4/_IS16674.JPG" left=0 top=50]
-
-[playse storage="sound/song/NO36出陣前の歌.ogg"]
-
-[cm]
-
 第三幕　　雪乃村[resetfont][r]
 [r]
+
+[p][cm]
 
 地から煙が上がっている。[r]
 住民達の声を落とし、何処からく自然で雅な村人達がいる。[l][r]
 [r]
-
-;BGM開始
-[playbgm storage="bgm/雪乃村人.ogg" loop=true]
 
 織部郎　　　
 雲が出ているね。[l][r]
@@ -340,8 +300,6 @@
 みよ　　　　
 …はい、兄。[l][r]
 
-[chara_show name="演者" storage="fgimage/4/_IS24222.JPG" left=0 top=50]
-
 右近　　　　なにも悪いわけじゃないなよ。なんて！みよ犯人だ、帰らいではいて。雨降、雨降も切りに行[l][r]
 けているな！…それは鉄岩なしねよてあ、いやななずく雨！[l][r]
 
@@ -365,36 +323,32 @@
 しんだね。兄弟もちさんがしてて、家族はともいけば、しよな[l][r]
 一緒にいててもらいと思っている。[l][r]
 
-[chara_show name="演者" storage="fgimage/4/_IS16676.JPG"]
-
 右近　　　　（みよを見つめて）あ…みよ？。雨降よになんかありるが、今の犯人のうん[l][r]
 になって下忌み憎くなって。[l][r]
-
-[chara_show name="演者" storage="fgimage/4/_IS16677.JPG" left=0 top=50]
 
 [r]
 みよが出る。右近、優しそうに娘のみよは。子守歌人。[l][r]
 [r]
 
-[stopbgm]
+; 物語は続く...
+[jump target=*continue_story]
 
-;音声再生
-[playse storage="sound/song/なまらのでやるからみよ.ogg"]
-
-[chara_show name="演者" storage="fgimage/4/_IS17236.JPG" left=0 top=50]
-
-[jump target=*end]
-
-*end
+*continue_story
 
 [cm]
 [bg storage="black.jpg"]
 
+; TyranoScript版では、ここから先の膨大なシナリオも
+; 順次変換していく予定です
+
 [font size=40 color=0xffffff bold=true]
-終[l][r]
+第一部　終[l][r]
 [resetfont]
 
 [r]
+[r]
+
+※ この先のシナリオは順次TyranoScript形式に変換中です[l][r]
 [r]
 
 劇団InnocentSphere　2009年公演[l][r]

@@ -31,6 +31,28 @@
             line-height: 1.5;
             border: 2px solid #444;
         }
+        
+        /* 縦書き用のメッセージエリア */
+        .message.vertical {
+            writing-mode: vertical-rl;
+            text-orientation: upright;
+            top: 80px;
+            bottom: 80px;
+            left: auto;
+            right: 80px;
+            width: 860px;
+            height: 580px;
+            font-family: "游明朝", "Yu Mincho", "ヒラギノ明朝 Pro W3", "Hiragino Mincho Pro", "MS P明朝", "MS PMincho", serif;
+            font-size: 20px;
+            line-height: 1.8;
+            letter-spacing: 0.1em;
+        }
+        
+        /* 横書き用のメッセージエリア（タイトル画面など） */
+        .message.horizontal {
+            writing-mode: horizontal-tb;
+            text-orientation: mixed;
+        }
         .title-screen {
             width: 100%;
             height: 100%;

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ヒ・ト・ミ - TyranoScript版</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            font-family: "メイリオ", "Meiryo", sans-serif;
+        }
+        #game_base {
+            width: 1024px;
+            height: 768px;
+            background-color: #000;
+            margin: 0 auto;
+            position: relative;
+        }
+        .message {
+            position: absolute;
+            bottom: 20px;
+            left: 80px;
+            right: 80px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            font-size: 18px;
+            line-height: 1.5;
+            border: 2px solid #444;
+        }
+        
+        /* 縦書き用のメッセージエリア */
+        .message.vertical {
+            writing-mode: vertical-rl;
+            text-orientation: upright;
+            top: 80px;
+            bottom: 80px;
+            left: auto;
+            right: 80px;
+            width: 860px;
+            height: 580px;
+            font-family: "游明朝", "Yu Mincho", "ヒラギノ明朝 Pro W3", "Hiragino Mincho Pro", "MS P明朝", "MS PMincho", serif;
+            font-size: 20px;
+            line-height: 1.8;
+            letter-spacing: 0.1em;
+        }
+        
+        /* 横書き用のメッセージエリア（タイトル画面など） */
+        .message.horizontal {
+            writing-mode: horizontal-tb;
+            text-orientation: mixed;
+        }
+        .title-screen {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #001, #003);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .start-button {
+            background: #333;
+            color: white;
+            padding: 15px 30px;
+            border: 2px solid #666;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 10px;
+            transition: all 0.3s;
+        }
+        .start-button:hover {
+            background: #555;
+            border-color: #888;
+        }
+        #game_content {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, #002 0%, #001 100%);
+            position: relative;
+        }
+        .click-indicator {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            color: #aaa;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div id="game_base">
+        <div id="title_screen" class="title-screen">
+            <h1 style="color: white; text-shadow: 2px 2px 4px #000; font-size: 48px; margin-bottom: 10px;">ヒ・ト・ミ</h1>
+            <h2 style="color: #ccc; text-shadow: 2px 2px 4px #000; font-size: 20px; margin-bottom: 40px;">TyranoScript版</h2>
+            <button class="start-button" onclick="startGame()">はじめから</button>
+            <button class="start-button" onclick="showInfo()">ゲーム情報</button>
+            <button class="start-button" onclick="showOriginal()">オリジナル版について</button>
+        </div>
+        <div id="game_content" style="display: none;">
+            <div id="background"></div>
+            <div id="characters"></div>
+            <div class="message" id="message_area">
+                <div id="message_text">ゲームを開始しました...</div>
+            </div>
+            <div class="click-indicator">クリックして進む</div>
+        </div>
+    </div>
+
+    <script src="tyrano/simple_engine.js"></script>
+</body>
+</html>

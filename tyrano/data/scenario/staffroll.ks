@@ -1,0 +1,226 @@
+; staffroll.ks - スタッフロール（TyranoScript版）
+
+*staffroll
+
+[position layer="message0" page=fore opacity=125 vertical=false]
+
+; 背景設定
+[bg storage="fgimage/55/_IS17894.JPG" time=0]
+
+; メッセージ位置設定（スタッフロール用）
+[position layer="message0" left=0 top=600 width=1024 height=768 page=fore visible=true]
+
+; 音楽開始
+; [playbgm storage="bgm/ヒトミエンディングテーマ.ogg" loop=true]
+
+; スタッフロール開始
+[nowait]
+
+【ヒ・ト・ミ】[r]
+[r]
+<製・作・出・版>[r]
+[font size=45]イルスパス[resetfont][r]
+[r]
+[r]
+[r]
+<出演>[r]
+[font size=25]みそ[resetfont][r]
+蜘蛛白川[r]
+[font size=25][r][resetfont]
+
+[font size=25]中田しのぶ[resetfont][r]
+桃川爽士[r]
+[font size=25][r][resetfont]
+
+[font size=25]松本美智子[r][resetfont]
+平山健一[r]
+[font size=25][r][resetfont]
+
+[font size=25]福田[r][resetfont]
+野田明男[r]
+[font size=25][r][resetfont]
+
+[font size=25]中野宜一郎[r][resetfont]
+横山克彦[r]
+[font size=25][r][resetfont]
+
+[font size=25]雪花[r][resetfont]
+五嶋修司[r]
+[font size=25][r][resetfont]
+
+[font size=25]園長弘幸[r][resetfont]
+中田清正[r]
+[font size=25][r][resetfont]
+
+[font size=25]川[r][resetfont]
+桜野のゆか[r]
+[font size=25][r][resetfont]
+
+[font size=25]五廊泰江[r][resetfont]
+横田太吾[r]
+[font size=25][r][resetfont]
+
+[font size=25]雅美[r][resetfont]
+阿藤優[r]
+[r]
+[r]
+
+[font size=25]藤田義隆[r][resetfont]
+横山出雲[r]
+[font size=25][r][resetfont]
+
+[font size=25]春田江吏[r][resetfont]
+田中甲基[r]
+[font size=25][r][resetfont]
+
+[font size=25]梶子律江[r][resetfont]
+新羽圭太郎[r]
+[font size=25][r][resetfont]
+
+[font size=25]田中健[r][resetfont]
+福山信基[r]
+[font size=25][r][resetfont]
+
+[r]
+
+[font size=25]美佐百愛[r][resetfont]
+長田仁之義[r]
+[font size=25][r][resetfont]
+
+[font size=25]田房[r][resetfont]
+塗本信和[r]
+[font size=25][r][resetfont]
+
+[font size=25]飛切麗子[r][resetfont]
+福留康子[r]
+[font size=25][r][resetfont]
+
+[font size=25]浜野敏[r][resetfont]
+松田紀基[r]
+[font size=25][r][resetfont]
+
+[font size=25]パントラ拓[r][resetfont]
+廻後久昭[r]
+[font size=25][r][resetfont]
+
+[font size=25]波紀[r][resetfont]
+吉原敬義[r]
+[font size=25][r][resetfont]
+
+[font size=25]間宮郎[r][resetfont]
+新福義順[r]
+[font size=25][r][resetfont]
+
+[font size=25]芥川[r][resetfont]
+波瀬悠[r]
+[font size=25][r][resetfont]
+
+[font size=25]みつ[r][resetfont]
+坂本みなを[r]
+[font size=25][r][resetfont]
+
+[font size=25]ルスタ[r][resetfont]
+豊藤咲子朱子[r]
+[font size=25][r][resetfont]
+
+[font size=25]とも[r][resetfont]
+平田玲子[r]
+[font size=25][r][resetfont]
+
+[font size=25]頼江[r][resetfont]
+豊田太吾紀[r]
+[r]
+[r]
+<スタッフ>[r]
+撮影[r]
+関田太昭（A.P.S）[r]
+[r]
+脚本演出[r]
+新沢亮[r]
+[r]
+衣装[r]
+坂木江ス（ARABESQUE）[r]
+[r]
+翻訳[r]
+塗本わかば[r]
+[r]
+演出[r]
+浦田敦美[r]
+[r]
+ヘアメイク[r]
+竜士[r]
+[r]
+照明監督[r]
+武藤政行[r]
+[r]
+撮影編集・美術[r]
+谷田三俊（selfimage produkts）[r]
+[r]
+美術オペレーション[r]
+福江亮[r]
+[r]
+スチール[r]
+横田喜義[r]
+[r]
+ビデオ編集[r]
+三ア豊プロト[r]
+[r]
+撮影協力[r]
+浦安淳一[r]
+[r]
+特別協力[r]
+福井りあん、人守直三十、横田浩貴、ポストニー[r]前田由子、美純姉子、古井夫[r]
+[r]
+other members[r]
+福河由太　馬場豊春[r]
+[r]
+　謝辞　[r]
+松村優衛[r]
+[r]
+企画制作[r]
+InnocentSphere[r]
+[r]
+特別協力[r]
+RIDEOUT　アートプロダクション　エスプライング　横田AUN[r]横田コーヒー工房　シアターキューブロック[r]
+smokers　team Bomb the twist　キュリオOFFICE BLUE[r]
+CoRich 真夜中パオ　スタジオチーミング・コンサート[r]
+[r]
+[r]
+　２００５年１０月２２日（土）〜２５(日)[r]
+　王たちの座ざシアターにて公演[r]
+[r]
+[r]
+[r]
+[r]
+「ヒ・ト・ミ」デジタル小説版スタッフ[r]
+[r]
+プログラミング・スクリプト[r]
+蜘蛛白川[r]
+[r]
+タイトルイラスト[r]
+蚊帳律子[r]
+[r]
+音楽[r]
+神田里絵[r]
+[r]
+制作企画・監督[r]
+新福義順[r]
+[r]
+協力・情報・監督[r]
+坂本玲菜[r]
+[r]
+[r]
+[r]
+[r]
+[r]
+
+; 音楽停止
+; [fadeoutbgm time=3000]
+
+[wait time=10000]
+
+; スタッフロール終了後の処理
+[layopt layer="message0" page="fore" visible="false"]
+[bg storage="fgimage/55/_IS17894.JPG" time=0]
+[p]
+[jump target=*title_menu storage="start.ks"]
